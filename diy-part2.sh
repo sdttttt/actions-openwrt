@@ -10,5 +10,8 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-# Modify default IP
+#Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
+
+# 默认开启 Irqbalance
+sed -i "s/enabled '0'/enabled '1'/g" feeds/packages/utils/irqbalance/files/irqbalance.config
