@@ -33,4 +33,4 @@ sed -i 's,-mcpu=generic,-march=armv8-a,g' include/target.mk
 #sed -i "s,'eth1' 'eth0','eth0' 'eth1',g" target/linux/rockchip/armv8/base-files/etc/board.d/02_network
 
 # luci-app-daed-next
-git clone https://github.com/sbwml/luci-app-daed-next package/new/luci-app-daed
+git clone https://github.com/sbwml/luci-app-daed-next package/new/luci-app-daed-next
