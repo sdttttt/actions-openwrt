@@ -16,6 +16,9 @@
 # 默认开启 Irqbalance
 sed -i "s/enabled '0'/enabled '1'/g" feeds/packages/utils/irqbalance/files/irqbalance.config
 
+# luci-app-daed-next
+git clone https://github.com/sbwml/luci-app-daed-next package/daed-next
+
 # mosdns
 # find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 # find ./ | grep Makefile | grep mosdns | xargs rm -f
