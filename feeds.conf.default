@@ -1,0 +1,15 @@
+
+# src/gz immortalwrt_core https://mirrors.vsean.net/openwrt/snapshots/targets/rockchip/armv8/packages
+# src/gz immortalwrt_base https://mirrors.vsean.net/openwrt/snapshots/packages/aarch64_generic/base
+# src/gz immortalwrt_luci https://mirrors.vsean.net/openwrt/snapshots/packages/aarch64_generic/luci
+# src/gz immortalwrt_packages https://mirrors.vsean.net/openwrt/snapshots/packages/aarch64_generic/packages
+# src/gz immortalwrt_routing https://mirrors.vsean.net/openwrt/snapshots/packages/aarch64_generic/routing
+# src/gz immortalwrt_telephony https://mirrors.vsean.net/openwrt/snapshots/packages/aarch64_generic/telephony
+
+
+src/gz immortalwrt_core https://downloads.immortalwrt.org/snapshots/targets/rockchip/armv8/packages
+src/gz immortalwrt_base https://downloads.immortalwrt.org/snapshots/packages/aarch64_generic/base
+src/gz immortalwrt_luci https://downloads.immortalwrt.org/snapshots/packages/aarch64_generic/luci
+src/gz immortalwrt_packages https://downloads.immortalwrt.org/snapshots/packages/aarch64_generic/packages
+src/gz immortalwrt_routing https://downloads.immortalwrt.org/snapshots/packages/aarch64_generic/routing
+src/gz immortalwrt_telephony https://downloads.immortalwrt.org/snapshots/packages/aarch64_generic/telephony
