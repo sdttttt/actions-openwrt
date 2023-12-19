@@ -10,18 +10,6 @@
 # Description: OpenWrt DIY script part 1 (Before Update feeds)
 #
 
-# Uncomment a feed source
-#sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
-
-# Add a feed source
-#echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
-#echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
-
-#git clone https://github.com/sbwml/luci-app-daed-next package/daed-next
-
-# 使用 O2 级别的优化
-# sed -i 's/Os/O2/g' include/target.mk
-
 # 使用 O3 级别的优化
 sed -i 's/Os/O3/g' include/target.mk
 
