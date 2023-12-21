@@ -19,5 +19,9 @@ find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
+# luci-app-openclash
+find ./ | grep Makefile | grep openclash | xargs rm -f
+git clone https://github.com/vernesong/OpenClash package/luci-app-openclash
+
 # luci-app-daed-next
 # git clone https://github.com/sbwml/luci-app-daed-next package/daed-next
