@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Immortalwrt-23.05
+name: Immortalwrt-master
 
 on:
   repository_dispatch:
