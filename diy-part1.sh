@@ -14,7 +14,7 @@
 sed -i 's/Os/O3/g' include/target.mk
 
 # 使用专属优化
-# sed -i 's,-mcpu=generic,-march=armv8-a,g' include/target.mk
+sed -i 's,-mcpu=generic,-march=armv8-a,g' include/target.mk
 
 # 交换 LAN/WAN 口
 # 交换 LAN/WAN 口
