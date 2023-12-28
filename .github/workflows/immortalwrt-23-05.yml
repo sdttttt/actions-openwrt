@@ -43,6 +43,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
 
+    - name: Show system
+      run: |
+        lscpu
+        free -h
+        df -Th
+        uname -a
+
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
