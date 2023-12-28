@@ -1,0 +1,163 @@
+log:
+  level: info
+  file: "/var/log/mosdns.log"
+
+include: []
+
+plugins:
+
+  - tag: hosts
+    type: hosts
+    args:
+      entries:
+        - "e-hentai.org  172.67.0.127 104.20.134.21  104.20.135.21"
+        - "exhentai.org  172.67.187.219 178.175.129.254"
+        - "upld.e-hentai.org 94.100.18.247  94.100.18.249 "
+        - "api.e-hentai.org 178.162.147.246 178.162.139.18 37.48.89.16 81.171.10.55"
+        - "forums.e-hentai.org 94.100.18.243 104.20.134.21 104.20.135.21 172.67.0.127"
+
+  # 缓存
+  - tag: cn_cache
+    type: cache
+    args:
+      size: 1024
+      lazy_cache_ttl: 8192
+      dump_file: "/var/mosdns/cn_cache.dump"
+      dump_interval: 3600
+
+  # 缓存
+  - tag: fallback_cache
+    type: cache
+    args:
+      size: 1024
+      lazy_cache_ttl: 8192
+      dump_file: "/var/mosdns/fallback_cache.dump"
+      dump_interval: 3600
+
+  # 转发至本地服务器
+  - tag: forward_local
+    type: forward
+    args:
+      concurrent: 6
+      upstreams:
+        - addr: 192.168.1.1
+        
+        - addr: https://dns.alidns.com
+          bootstrap: 223.5.5.5
+          idle_timeout: 600
+        
+        - addr: https://doh.pub/dns-query
+          bootstrap: 119.29.29.29
+          idle_timeout: 600
+
+        - addr: tls://120.53.53.53
+          idle_timeout: 600
+
+        - addr: tls://1.12.12.12
+          idle_timeout: 600
+
+        - addr: 114.114.114.114
+
+  # 转发至远程服务器
+  - tag: forward_remote
+    type: forward
+    args:
+      concurrent: 6
+      upstreams:
+        - addr: https://cloudflare-dns.com/dns-query
+          bootstrap: 223.5.5.5
+          idle_timeout: 3600
+
+        - addr: https://8.8.8.8/dns-query
+          idle_timeout: 3600
+
+
+        - addr: https://8.8.4.4/dns-query
+          idle_timeout: 3600
+
+        - addr: https://dns.quad9.net/dns-query
+          bootstrap: 223.5.5.5
+          idle_timeout: 3600
+
+        - addr: https://dns.twnic.tw/dns-query
+          bootstrap: 223.5.5.5
+          idle_timeout: 3600
+
+        - addr: https://doh.sb/dns-query
+          bootstrap: 223.5.5.5
+          idle_timeout: 3600
+
+  # 国内解析
+  - tag: local_sequence
+    type: sequence
+    args:
+      - exec: $forward_local
+      - exec: ttl 300-600
+
+  # 国外解析
+  - tag: remote_sequence
+    type: sequence
+    args:
+      - exec: $forward_remote
+      - exec: ttl 600-1200
+
+  # fallback 用远程服务器 sequence
+  - tag: fallback
+    type: fallback
+    args:
+      primary: local_sequence
+      secondary: remote_sequence
+      threshold: 512
+      always_standby: true
+
+  # 国内DNS解析逻辑
+  - tag: cn_sequence
+    type: sequence
+    args:
+
+      - matches: qtype 65
+        exec: reject 3
+      
+      - exec: $hosts
+
+      # 缓存
+      - exec: $cn_cache
+      - matches: has_resp
+        exec: accept
+
+      # 测试是否是国内域名，如果是就直接走国内解析
+      #- matches: "qname $cn_site"
+      #  exec: $local_sequence
+      #- matches: has_resp
+      #  exec: accept
+
+      - exec: $fallback
+
+  # 国外DNS解析逻辑
+  - tag: fallback_sequence
+    type: sequence
+    args:
+
+      - matches: qtype 65
+        exec: reject 3
+        
+      - exec: $hosts
+
+      - exec: $fallback_cache
+      - matches: has_resp
+        exec: accept
+
+      - exec: $remote_sequence
+
+  # 启动 udp 服务器。
+  - tag: cn_server
+    type: udp_server
+    args:
+      entry: cn_sequence
+      listen: ":6553"
+
+  - tag: fallback_server
+    type: udp_server
+    args:
+      entry: fallback_sequence
+      listen: ":6554"
