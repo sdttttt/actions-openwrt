@@ -50,14 +50,23 @@ jobs:
         df -Th
         uname -a
 
+    - name: Free Space
+      run: |
+        sudo docker image prune -a -f
+        sudo systemctl stop docker
+        
+        sudo apt-get -y purge firefox clang* ghc* google* llvm* mono* mongo* mysql* php*
+        sudo apt-get -y autoremove --purge
+        sudo apt-get clean
+        
+        rm -rf ~/{.cargo,.dotnet,.rustup}
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
+      
+
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo apt-get -y purge firefox clang* ghc* google* llvm* mono* mongo* mysql* php*
-        sudo apt-get -y autoremove --purge
-        sudo apt-get clean
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
 
         sudo sh -c 'echo "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-17 main" >> /etc/apt/sources.list'
         sudo sh -c 'echo "deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-17 main" >> /etc/apt/sources.list'
