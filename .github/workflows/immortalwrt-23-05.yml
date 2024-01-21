@@ -21,7 +21,7 @@ on:
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: 695bf40a48 # [这个版本能吃鹅，最近的23.05分支版本都不太稳定] ImmortalWrt 23.05.0 r27285-695bf40a48 / LuCI openwrt-23.05 branch git-23.313.50115-e3df634
+  REPO_BRANCH: openwrt-23.05
   # REPO_URL: https://github.com/coolsnowwolf/lede
   # REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
@@ -97,6 +97,7 @@ jobs:
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
+        git reset --hard 695bf40a48 # 能稳定吃鹅 ImmortalWrt 23.05.0 r27285-695bf40a48 / LuCI openwrt-23.05 branch git-23.313.50115-e3df634
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: 开启缓存
