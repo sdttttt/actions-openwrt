@@ -42,6 +42,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
+      ref: 695bf40a48 # ImmortalWrt 23.05.0 r27285-695bf40a48 / LuCI openwrt-23.05 branch git-23.313.50115-e3df634 官方23.05.0最后一个版本，稳定吃鹅
 
     - name: Show system
       run: |
