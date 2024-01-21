@@ -21,7 +21,7 @@ on:
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: openwrt-23.05
+  REPO_BRANCH: 695bf40a48 # [这个版本能吃鹅，最近的23.05分支版本都不太稳定] ImmortalWrt 23.05.0 r27285-695bf40a48 / LuCI openwrt-23.05 branch git-23.313.50115-e3df634
   # REPO_URL: https://github.com/coolsnowwolf/lede
   # REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
@@ -42,8 +42,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
-      with:
-        ref: 695bf40a48 # ImmortalWrt 23.05.0 r27285-695bf40a48 / LuCI openwrt-23.05 branch git-23.313.50115-e3df634 官方23.05.0最后一个版本，稳定吃鹅
 
     - name: Show system
       run: |
