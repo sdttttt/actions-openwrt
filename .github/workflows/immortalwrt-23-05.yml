@@ -106,7 +106,7 @@ jobs:
       uses: klever1988/cachewrtbuild@main
       with:
         ccache: 'true'
-        mixkey: 'Immortalwrt-23.05'
+        mixkey: 'Immortalwrt-23.05-695bf40a48'
         prefix: ${{ github.workspace }}/openwrt
     
     - name: Load custom feeds
