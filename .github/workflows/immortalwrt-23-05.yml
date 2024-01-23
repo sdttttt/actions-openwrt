@@ -97,8 +97,8 @@ jobs:
         df -hT $PWD
         
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-        # cd openwrt
-        # git reset --hard 695bf40a48 # 能稳定吃鹅 ImmortalWrt 23.05.0 r27285-695bf40a48 / LuCI openwrt-23.05 branch git-23.313.50115-e3df634
+        cd openwrt
+        git reset --hard 695bf40a48 # 能稳定吃鹅 ImmortalWrt 23.05.0 r27285-695bf40a48 / LuCI openwrt-23.05 branch git-23.313.50115-e3df634
         
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
