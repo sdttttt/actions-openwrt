@@ -4,7 +4,11 @@
 
 [![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square&label=LICENSE)](https://github.com/P3TERX/Actions-OpenWrt/blob/master/LICENSE)
 
-友善电子R2S Immortalwrt 23.05分支，配置基于官方预设，GCC13编译，O3优化. 吃鹅用 
+友善电子R2S Immortalwrt 23.05分支，配置基于官方预设，GCC13编译，O3优化.
+
+lan/wan口已经交换。
+
+该固件自带的应用只有DAE，netdata和内存释放。
 
 ## Usage
 
