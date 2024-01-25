@@ -103,7 +103,7 @@ jobs:
         
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
-    - name: 开启缓存
+    - name: Cache
       uses: klever1988/cachewrtbuild@main
       with:
         ccache: 'true'
