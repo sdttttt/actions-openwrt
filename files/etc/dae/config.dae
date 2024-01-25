@@ -1,0 +1,104 @@
+global {
+    tproxy_port: 12345
+    tproxy_port_protect: true
+    so_mark_from_dae: 0
+    log_level: trace
+    disable_waiting_network: false
+
+    lan_interface: eth0
+    # wan_interface: eth1 # 一般情况本机不走代理
+
+    auto_config_kernel_parameter: true
+
+    tcp_check_url: 'http://cp.cloudflare.com,1.1.1.1,2606:4700:4700::1111'
+    tcp_check_http_method: HEAD
+    udp_check_dns: 'dns.google.com:53,8.8.8.8,2001:4860:4860::8888'
+
+    check_interval: 31s
+    check_tolerance: 100ms
+    dial_mode: domain
+
+    allow_insecure: false
+
+    sniffing_timeout: 100ms
+
+    tls_implementation: tls
+    utls_imitate: chrome_auto
+}
+
+subscription {
+    '' # 订阅地址
+}
+
+group {
+    proxy {
+        policy: min_moving_avg
+    }
+    
+    exhentai {
+        # E站不能用香港和日本的节点，特别容易被封
+        filter: !name(keyword: '香港')
+        filter: !name(keyword: '日本')
+        filter: !name(keyword: '俄罗斯')
+        filter: !name(keyword: '马来西亚')
+
+        policy: random
+    }
+}
+
+dns {	
+    # 上游为dnsmasq和mosdns
+    upstream {
+        cndns: 'udp://127.0.0.1:53'
+        falldns: 'tcp+udp://dns.google.com:53'
+    }
+    
+    routing {
+
+        request {
+            qname(ext:'geosite.dat:category-ads-all') -> reject
+            fallback: cndns
+        }
+        
+        response {
+            upstream(falldns) -> accept
+            qname(ext:'geosite.dat:private') -> accept
+            ip(geoip:private) && !qname(ext:'geosite.dat:cn') -> falldns
+            fallback: accept
+        }
+    }
+}
+
+routing {
+	pname(NetworkManager, systemd-resolved, dnsmasq) -> must_direct
+	pname(mosdns) -> must_rules
+	
+	ipversion(6) -> direct
+	dscp(4) -> direct
+
+	# 目标非常用端口都走直连，避免BT流量走代理
+  # 有些WebTorrent是会走443和80的，注意规避
+	!dport(21,22,23,53,80,123,143,194,443,465,587,853,993,995,998) -> direct
+	
+	domain(ext:'geosite.dat:category-ads-all') -> block
+	domain(ext:'geosite.dat:github') -> proxy
+	domain(ext:'geosite.dat:microsoft') -> proxy
+	domain(ext:'geosite.dat:telegram') -> proxy
+	domain(ext:'geosite.dat:f-droid') -> proxy
+
+
+	domain(e-hentai.org, exhentai.org, upld.e-hentai.org, api.e-hentai.org, forums.e-hentai.org) -> exhentai
+
+
+	# 一般情况下gfw够用
+	domain(ext:'geosite.dat:gfw') -> proxy
+	domain(ext:'geosite.dat:category-porn') -> proxy
+
+
+	#domain(ext:'geosite.dat:category-games') -> direct
+	#domain(ext:'geosite.dat:geolocation-!cn') -> proxy
+	
+	domain(keyword:'jcomic') -> proxy
+	dip(ext:'geoip.dat:telegram') -> proxy
+	fallback: direct
+}
