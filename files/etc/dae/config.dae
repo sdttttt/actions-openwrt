@@ -1,3 +1,5 @@
+# 该配置文件为黑名单模式，只有命中才走代理
+
 global {
     tproxy_port: 12345
     tproxy_port_protect: true
