@@ -6,8 +6,6 @@ lan/wan口已经交换。
 
 该固件自带的应用只有DAE，netdata和内存释放。
 
-一般情况尽量使用23.05分支固件，master固件经测试了几个版本性能方面均不如23.05.
-
 ## Credits
 
 - [Microsoft Azure](https://azure.microsoft.com)
