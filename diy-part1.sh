@@ -23,3 +23,5 @@ sed -i "s,'eth1' 'eth0','eth0' 'eth1',g" target/linux/rockchip/armv8/base-files/
 
 # 修改主机名ImmortalWrt -> OpenWrt
 sed -i "s,hostname='ImmortalWrt',hostname='OpenWrt',g" package/base-files/files/bin/config_generate
+# 修改默认IP
+#sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
