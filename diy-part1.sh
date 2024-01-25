@@ -10,7 +10,7 @@
 # Description: OpenWrt DIY script part 1 (Before Update feeds)
 #
 
-# 使用 O2 级别的优化
+# 使用 O3 级别的优化
 sed -i 's/Os/O3/g' include/target.mk
 
 # 使用专属优化
