@@ -1,8 +1,13 @@
 [![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square&label=LICENSE)](https://github.com/P3TERX/Actions-OpenWrt/blob/master/LICENSE)
 
-友善电子R2S Immortalwrt 固件，有23.05分支和主线分支，配置基于官方预设，GCC13编译，使用GLIBC代替musl，O3优化，开启BPF。
+友善电子R2S Immortalwrt 固件，有23.05分支和主线分支.
 
-lan/wan口已经交换。
+- 配置基于官方预设
+- GCC13编译
+- 使用GLIBC代替musl
+- O3优化
+- 开启BPF
+- lan/wan口交换
 
 该固件自带的应用只有DAE，netdata和内存释放。
 
