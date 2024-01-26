@@ -6,6 +6,34 @@ lan/wan口已经交换。
 
 该固件自带的应用只有DAE，netdata和内存释放。
 
+## 编译记录
+
+本人是Openwrt新手，说实话也不太会玩固件，下面是一些编译时候需要的环境，官方提供的环境安装命令并不是很全。
+
+```bash
+# 其实应该只要12版本以上就可以了.
+# clang/llvm版本低于12的话，bpf-header编译就无法通过。
+
+sudo sh -c 'echo "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-13 main" >> /etc/apt/sources.list'
+sudo sh -c 'echo "deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-13 main" >> /etc/apt/sources.list'
+wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+
+sudo -E apt-get -qq update
+
+sudo apt install -y clang-13 llvm-13
+```
+
+```
+# GCC还是使用13以上，之前出现编译umiq等依赖时，cflag错误的情况，是版本过低导致的
+CONFIG_GCC_USE_VERSION_13=y
+```
+
+```
+# LTO 优化要关闭，不然xdp编译会出问题，说实话我很少会怀疑是编译优化导致的编译无法通过, 这次算是长见识了.
+# CONFIG_USE_LTO=y
+```
+
+
 ## Credits
 
 - [Microsoft Azure](https://azure.microsoft.com)
