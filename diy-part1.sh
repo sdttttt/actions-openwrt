@@ -25,6 +25,7 @@ sed -i "s,hostname='ImmortalWrt',hostname='OpenWrt',g" package/base-files/files/
 # 修改默认IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 
+# 添加DAE所需要的geodata
 if [ -e /workdir/files ]
 then
   mkdir /workdir/files/usr/share/dae
