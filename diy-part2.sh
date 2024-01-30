@@ -10,6 +10,7 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
+set +e
 
 # luci-app-mosdns
 find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
