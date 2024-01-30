@@ -6,16 +6,6 @@ include: []
 
 plugins:
 
-  - tag: hosts
-    type: hosts
-    args:
-      entries:
-        - "e-hentai.org  172.67.0.127 104.20.134.21  104.20.135.21"
-        - "exhentai.org  172.67.187.219 178.175.129.254"
-        - "upld.e-hentai.org 94.100.18.247  94.100.18.249 "
-        - "api.e-hentai.org 178.162.147.246 178.162.139.18 37.48.89.16 81.171.10.55"
-        - "forums.e-hentai.org 94.100.18.243 104.20.134.21 104.20.135.21 172.67.0.127"
-
   # 缓存
   - tag: cn_cache
     type: cache
@@ -99,8 +89,6 @@ plugins:
 
       - matches: qtype 65
         exec: reject 3
-      
-      - exec: $hosts
 
       # 缓存
       - exec: $cn_cache
@@ -122,8 +110,6 @@ plugins:
 
       - matches: qtype 65
         exec: reject 3
-        
-      - exec: $hosts
 
       - exec: $fallback_cache
       - matches: has_resp
