@@ -40,23 +40,9 @@ plugins:
     args:
       concurrent: 6
       upstreams:
-        - addr: 192.168.1.1
-        
-        - addr: https://dns.alidns.com
-          bootstrap: 223.5.5.5
-          idle_timeout: 600
-        
-        - addr: https://doh.pub/dns-query
-          bootstrap: 119.29.29.29
-          idle_timeout: 600
-
-        - addr: tls://120.53.53.53
-          idle_timeout: 600
-
-        - addr: tls://1.12.12.12
-          idle_timeout: 600
-
         - addr: 114.114.114.114
+        - addr: 223.5.5.5
+        - addr: 119.29.29.29
 
   # 转发至远程服务器
   - tag: forward_remote
@@ -64,10 +50,6 @@ plugins:
     args:
       concurrent: 6
       upstreams:
-        - addr: https://cloudflare-dns.com/dns-query
-          bootstrap: 223.5.5.5
-          idle_timeout: 3600
-
         - addr: https://8.8.8.8/dns-query
           idle_timeout: 3600
 
