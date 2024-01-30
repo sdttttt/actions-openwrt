@@ -28,7 +28,7 @@ plugins:
   - tag: forward_local
     type: forward
     args:
-      concurrent: 6
+      concurrent: 2
       upstreams:
         - addr: 114.114.114.114
         - addr: 223.5.5.5
@@ -38,7 +38,7 @@ plugins:
   - tag: forward_remote
     type: forward
     args:
-      concurrent: 6
+      concurrent: 2
       upstreams:
         - addr: https://8.8.8.8/dns-query
           idle_timeout: 3600
