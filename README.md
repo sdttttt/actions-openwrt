@@ -6,7 +6,6 @@ NanoPI-R2S Immortalwrt 固件，有23.05分支和主线分支.
 - GCC13编译
 - 使用GLIBC代替musl
 - O3优化
-- 开启BPF
 - lan/wan口交换
 
 该固件自带的应用只有DAE，netdata和内存释放。
