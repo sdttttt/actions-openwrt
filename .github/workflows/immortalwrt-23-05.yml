@@ -101,13 +101,6 @@ jobs:
         # git reset --hard 695bf40a48 # 能稳定吃鹅 ImmortalWrt 23.05.0 r27285-695bf40a48 / LuCI openwrt-23.05 branch git-23.313.50115-e3df634
         
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-
-    - name: Cache
-      uses: klever1988/cachewrtbuild@main
-      with:
-        ccache: 'true'
-        mixkey: 'Immortalwrt-23.06'
-        prefix: ${{ github.workspace }}/openwrt
     
     - name: Run Script 1
       run: |
