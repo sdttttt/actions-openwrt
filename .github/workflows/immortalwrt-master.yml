@@ -107,7 +107,7 @@ jobs:
       uses: klever1988/cachewrtbuild@main
       with:
         ccache: 'true'
-        mixkey: 'Immortalwrt-23.05-master'
+        mixkey: 'Immortalwrt-master'
         prefix: ${{ github.workspace }}/openwrt
     
     - name: Run Script 1
