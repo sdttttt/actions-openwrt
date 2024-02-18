@@ -8,7 +8,7 @@ NanoPI-R2S Immortalwrt 固件，有23.05分支和主线分支.
 - O3优化
 - lan/wan口交换
 
-该固件自带的应用只有DAE(无luci)，netdata, mosdns和内存释放。
+该固件自带的应用只有DAE(无luci和web)，netdata, mosdns和内存释放。
 
 ## 编译记录
 
