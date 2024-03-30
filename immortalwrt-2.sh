@@ -13,7 +13,6 @@
 set +e
 
 # luci-app-openclash
-find ./ | grep Makefile | grep openclash | xargs rm -f  
 git clone https://github.com/vernesong/OpenClash --depth=1  package/luci-app-openclash 
 
 # 修改 dae.init 加上日志记录
