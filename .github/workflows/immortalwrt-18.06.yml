@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Immortalwrt-master
+name: Immortalwrt-18.06
 
 on:
   repository_dispatch:
