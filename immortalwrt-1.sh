@@ -19,6 +19,8 @@ sed -i "s,.203,.272,g" include/kernel-5.4
 sed -i "s,.203,.272,g" include/kernel-5.4
 sed -i "s,fc933f5b13066cfa54aacb5e86747a167bad1d8d23972e4a03ab5ee36c29798a,3599d5959a403e64be407d7f05e56cb270d6ddd154e89a596609919ab1e2e366,g" include/kernel-5.4
 
+cat include/kernel-5.4
+
 # 修改主机名ImmortalWrt -> OpenWrt
 sed -i "s,hostname='ImmortalWrt',hostname='OpenWrt',g" package/base-files/files/bin/config_generate
 # 修改默认IP
