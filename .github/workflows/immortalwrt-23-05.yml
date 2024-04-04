@@ -25,7 +25,7 @@ env:
   # REPO_URL: https://github.com/coolsnowwolf/lede
   # REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: immortalwrt.r2s.config
+  CONFIG_FILE: immortalwrt.23.x86.config
   DIY_P1_SH: immortalwrt-1.sh
   DIY_P2_SH: immortalwrt-2.sh
   UPLOAD_BIN_DIR: false
