@@ -5,7 +5,6 @@ x86 Immortalwrt 固件，有23.05分支和主线分支.
 - 配置基于官方预设
 - GCC13编译
 - O3优化
-- lan/wan口交换
 
 该固件自带的应用只有DAE(无luci和web)，netdata, mosdns和内存释放，dae有自带的配置文件，为黑名单模式(只有命中gfw才会走代理)
 
