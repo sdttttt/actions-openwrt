@@ -19,6 +19,9 @@ sed -i "s,hostname='ImmortalWrt',hostname='OpenWrt',g" package/base-files/files/
 # 修改默认IP
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 
+sed -i 's/KERNEL_PATCHVER:=6.6/KERNEL_PATCHVER:=6.1/g' target/linux/x86/Makefile
+sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.1/g' target/linux/x86/Makefile
+
 # 添加DAE所需要的geodata
 if [ -e /workdir/files ]
 then
