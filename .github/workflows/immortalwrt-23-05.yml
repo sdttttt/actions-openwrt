@@ -127,19 +127,19 @@ jobs:
       run: | 
          [ -e openwrt/.config ] && cat openwrt/.config
 
-    - name: Cache
-      uses: HiGarfield/cachewrtbuild@main
-      with:
-        #是否一并缓存.ccache目录，如果你启用了ccache。这是唯一的常用参数，其他三个用于除错，一般不需要调整
-        ccache: false
-        #是否缓存工具链目录
-        toolchain: true
-        #是否跳过工具链编译
-        skip: true
-        #清空缓存
-        clean: false
-        prefix: ${{ github.workspace }}/openwrt
-        mixkey: 'immortalwrt-23.05-x86_64'
+#    - name: Cache
+#      uses: HiGarfield/cachewrtbuild@main
+#      with:
+#        #是否一并缓存.ccache目录，如果你启用了ccache。这是唯一的常用参数，其他三个用于除错，一般不需要调整
+#        ccache: false
+#        #是否缓存工具链目录
+#        toolchain: true
+#        #是否跳过工具链编译
+#        skip: true
+#        #清空缓存
+#        clean: false
+#        prefix: ${{ github.workspace }}/openwrt
+#        mixkey: 'immortalwrt-23.05-x86_64'
 
     - name: Download
       id: package
