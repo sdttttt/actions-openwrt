@@ -1,10 +1,6 @@
 [![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square&label=LICENSE)](https://github.com/P3TERX/Actions-OpenWrt/blob/master/LICENSE)
 
-x86 Immortalwrt 固件，有23.05分支和主线分支.
-
-- 配置基于官方预设
-- GCC13编译
-- O3优化
+x86 Immortalwrt 固件，有23.05分支和主线分支
 
 ## 编译记录
 
