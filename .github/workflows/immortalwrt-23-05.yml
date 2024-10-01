@@ -28,6 +28,7 @@ env:
   CONFIG_FILE: immortalwrt.23.x86.config
   DIY_P1_SH: immortalwrt-1.sh
   DIY_P2_SH: immortalwrt-2.sh
+  CLASH_CORE_SH: preset-clash-core-amd64.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
@@ -106,8 +107,10 @@ jobs:
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
+        chmod +x $CLASH_CORE_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
+        $GITHUB_WORKSPACE/$CLASH_CORE_SH
 
     - name: Update Feeds
       run: cd openwrt && ./scripts/feeds update -a
