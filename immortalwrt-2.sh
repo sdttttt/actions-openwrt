@@ -23,11 +23,8 @@ find ./ | grep Makefile | grep openclash | xargs rm -f  
 git clone https://github.com/vernesong/OpenClash --depth=1  package/luci-app-openclash 
 
 # luci-app-nekoclash
-find ./ | grep Makefile | grep nekoclash | xargs rm -f  
-git clone https://github.com/Thaolga/luci-app-nekoclash  package/luci-app-nekoclash
-cd package/luci-app-nekoclash
-git checkout neko
-
+find ./ | grep Makefile | grep nekobox | xargs rm -f  
+git clone https://github.com/Thaolga/openwrt-nekobox  package/openwrt-nekobox
 # luci-app-daed-next
 # git clone https://github.com/sbwml/luci-app-daed-next package/daed-next
 
