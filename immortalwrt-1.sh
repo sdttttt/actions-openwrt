@@ -31,7 +31,7 @@ sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 #fi
 
 echo "克隆 YAOF"
-git clone -b 23.05 --depth 1 https://github.com/QiuSimons/luci-app-daed /workdir/.YAOF
+git clone -b 23.05 --depth 1 https://github.com/QiuSimons/YAOF /workdir/.YAOF
 
 echo "打打补丁~"
 ### 必要的 Patches FROM YAOF ###
