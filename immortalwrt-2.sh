@@ -20,7 +20,7 @@ git clone https://github.com/sbwml/v2ray-geodata --depth=1  package/v2ray-geodat
 
 # luci-app-openclash
 find ./ | grep Makefile | grep openclash | xargs rm -f  
-git clone https://github.com/vernesong/OpenClash --depth=1  package/luci-app-openclash 
+git clone -b dev https://github.com/vernesong/OpenClash --depth=1  package/luci-app-openclash 
 
 # luci-app-nekoclash
 # find ./ | grep Makefile | grep nekobox | xargs rm -f  
