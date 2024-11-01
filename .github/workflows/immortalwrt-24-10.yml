@@ -62,7 +62,10 @@ jobs:
         
         rm -rf ~/{.cargo,.dotnet,.rustup}
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-      
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
+        sudo timedatectl set-timezone "$TZ"
+        sudo docker image prune -a -f
+        sudo docker container prune -f
 
     - name: Show Space Usage
       if: (!cancelled())
