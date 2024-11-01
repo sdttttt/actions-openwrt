@@ -30,16 +30,16 @@ sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 #  curl -o /workdir/files/usr/share/dae/geosite.dat https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
 #fi
 
-echo "克隆 YAOF"
-git clone -b 23.05 --depth 1 https://github.com/QiuSimons/YAOF /workdir/.YAOF
+# echo "克隆 YAOF"
+# git clone -b 23.05 --depth 1 https://github.com/QiuSimons/YAOF /workdir/.YAOF
 
-echo "打打补丁~"
+# echo "打打补丁~"
 ### 必要的 Patches FROM YAOF ###
 # TCP optimizations
-cp -rf /workdir/.YAOF/PATCH/backport/TCP/* ./target/linux/generic/backport-5.15/
+# cp -rf /workdir/.YAOF/PATCH/backport/TCP/* ./target/linux/generic/backport-5.15/
 # x86_csum
 # cp -rf /workdir/.YAOF/PATCH/backport/x86_csum/* ./target/linux/generic/backport-5.15/
 # BBRv3
-cp -rf /workdir/.YAOF/PATCH/BBRv3/kernel/* ./target/linux/generic/backport-5.15/
+# cp -rf /workdir/.YAOF/PATCH/BBRv3/kernel/* ./target/linux/generic/backport-5.15/
 # LRNG
 # cp -rf ../PATCH/LRNG/* ./target/linux/generic/hack-5.15/
