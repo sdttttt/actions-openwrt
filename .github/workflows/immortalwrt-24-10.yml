@@ -54,7 +54,7 @@ jobs:
     - name: Free Space
       run: |
 
-        chmod +x free_disk_space.sh && free_disk_space.sh
+        chmod +x ./free_disk_space.sh && ./free_disk_space.sh
         
         sudo docker image prune -a -f
         sudo systemctl stop docker
