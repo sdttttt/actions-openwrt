@@ -64,6 +64,10 @@ jobs:
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
       
 
+    - name: Show Space Usage
+      if: (!cancelled())
+      run: df -hT
+
     - name: Install
       env:
         DEBIAN_FRONTEND: noninteractive
