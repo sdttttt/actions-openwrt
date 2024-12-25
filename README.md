@@ -2,7 +2,7 @@
 
 能编译以下固件~
 
-- x86 Immortalwrt 固件24.10分支.
+- x86 Immortalwrt 24.10
 
 > 纯新手啥也不会，不会改源码也不会打patch，基本调调配置文件和package，就主打一个原汁原味😢
 
