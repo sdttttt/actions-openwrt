@@ -10,6 +10,15 @@
 # Description: OpenWrt DIY script part 1 (Before Update feeds)
 #
 sed -i 's/Os/O2 -march=x86-64-v2/g' include/target.mk
+
+# 使用动态抢占
+cat >> target/linux/x86/config-6.6 <<-EOF
+CONFIG_PREEMPT_DYNAMIC=y
+EOF
+cat >> target/linux/x86/64/config-6.6 <<-EOF
+CONFIG_PREEMPT_DYNAMIC=y
+EOF
+
 # 交换 LAN/WAN 口
 sed -i 's,"eth1" "eth0","eth0" "eth1",g' target/linux/rockchip/armv8/base-files/etc/board.d/02_network
 sed -i "s,'eth1' 'eth0','eth0' 'eth1',g" target/linux/rockchip/armv8/base-files/etc/board.d/02_network
