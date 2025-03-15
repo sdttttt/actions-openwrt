@@ -9,7 +9,7 @@
 # File name: diy-part1.sh
 # Description: OpenWrt DIY script part 1 (Before Update feeds)
 #
-sed -i 's/Os/O2 -march=x86-64-v2 -ftree-vectorize -fno-strict-aliasing/g' include/target.mk
+sed -i 's/Os/O2 -march=x86-64-v2/g' include/target.mk
 
 # 使用动态抢占
 cat >> target/linux/x86/config-6.6 <<-EOF
