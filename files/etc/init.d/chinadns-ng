@@ -1,0 +1,25 @@
+#!/bin/sh /etc/rc.common
+USE_PROCD=1
+
+START=95
+STOP=01
+
+CONFIGURATION=
+
+start_service() {
+    procd_open_instance chinadns-ng
+
+    procd_set_param command /usr/bin/chinadns-ng -C /root/china-ng.config
+    procd_set_param file /root/china-ng.config
+
+    procd_close_instance
+}
+
+stop_service() {
+    kill $(ps | grep chinadns-ng -m 1 | awk '{print $1}')
+}
+
+restart_service() {
+    stop
+    start
+}
