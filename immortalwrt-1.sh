@@ -10,8 +10,8 @@
 # Description: OpenWrt DIY script part 1 (Before Update feeds)
 #
 
-wget https://github.com/zfl9/chinadns-ng/raw/refs/heads/master/res/chnroute.nftset -o ../files/root/chnroute.nftset
-wget https://github.com/zfl9/chinadns-ng/raw/refs/heads/master/res/chnlist.txt -o ../files/root/chnlist.txt
+wget https://github.com/zfl9/chinadns-ng/raw/refs/heads/master/res/chnroute.nftset -o $GITHUB_WORKSPACE/files/root/chnroute.nftset
+wget https://github.com/zfl9/chinadns-ng/raw/refs/heads/master/res/chnlist.txt -o $GITHUB_WORKSPACE/files/root/chnlist.txt
 
 sed -i 's/Os/O2 -march=x86-64-v2/g' include/target.mk
 
