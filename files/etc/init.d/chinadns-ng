@@ -4,13 +4,12 @@ USE_PROCD=1
 START=95
 STOP=01
 
-CONFIGURATION=
 
 start_service() {
     procd_open_instance chinadns-ng
 
-    procd_set_param command /usr/bin/chinadns-ng -C /root/china-ng.config
-    procd_set_param file /root/china-ng.config
+    procd_set_param command /usr/bin/chinadns-ng -C /root/chinadns-ng.conf
+    procd_set_param file /root/chinadns-ng.conf
 
     procd_close_instance
 }
