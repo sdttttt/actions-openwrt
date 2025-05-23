@@ -43,6 +43,9 @@ sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 #  curl -o /workdir/files/usr/share/dae/geosite.dat https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
 #fi
 
+# luci-app-nikki
+echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
+
 echo "克隆 YAOF"
 git clone -b 24.10 --depth 1 https://github.com/QiuSimons/YAOF /workdir/.YAOF
 
