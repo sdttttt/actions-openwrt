@@ -47,20 +47,20 @@ sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
 
 echo "克隆 YAOF"
-git clone -b 24.10 --depth 1 https://github.com/QiuSimons/YAOF /workdir/.YAOF
+git clone -b 24.10 --depth 1 https://github.com/QiuSimons/YAOF .YAOF
 
 # echo "打打补丁~"
 ### 必要的 Patches FROM YAOF ###
 # TCP optimizations
-cp -rf /workdir/.YAOF/PATCH/kernel/6.7_Boost_For_Single_TCP_Flow/* ./target/linux/generic/backport-6.6/
-cp -rf /workdir/.YAOF/PATCH/kernel/6.8_Boost_TCP_Performance_For_Many_Concurrent_Connections-bp_but_put_in_hack/* ./target/linux/generic/hack-6.6/
-cp -rf /workdir/.YAOF/PATCH/kernel/6.8_Better_data_locality_in_networking_fast_paths-bp_but_put_in_hack/* ./target/linux/generic/hack-6.6/
+cp -rf .YAOF/PATCH/kernel/6.7_Boost_For_Single_TCP_Flow/* ./target/linux/generic/backport-6.6/
+cp -rf .YAOF/PATCH/kernel/6.8_Boost_TCP_Performance_For_Many_Concurrent_Connections-bp_but_put_in_hack/* ./target/linux/generic/hack-6.6/
+cp -rf .YAOF/PATCH/kernel/6.8_Better_data_locality_in_networking_fast_paths-bp_but_put_in_hack/* ./target/linux/generic/hack-6.6/
 # UDP
-cp -rf /workdir/.YAOF/PATCH/kernel/6.7_FQ_packet_scheduling/* ./target/linux/generic/backport-6.6/
+cp -rf .YAOF/PATCH/kernel/6.7_FQ_packet_scheduling/* ./target/linux/generic/backport-6.6/
 # BBRv3
-cp -rf /workdir/.YAOF/PATCH/kernel/bbr3/* ./target/linux/generic/hack-6.6/
+cp -rf .YAOF/PATCH/kernel/bbr3/* ./target/linux/generic/hack-6.6/
 # fullcore
-cp -rf /workdir/.YAOF/PATCH/kernel/bcmfullcone/* ./target/linux/generic/hack-6.6/
+cp -rf .YAOF/PATCH/kernel/bcmfullcone/* ./target/linux/generic/hack-6.6/
 
 # LRNG
 # cp -rf ../PATCH/LRNG/* ./target/linux/generic/hack-5.15/
