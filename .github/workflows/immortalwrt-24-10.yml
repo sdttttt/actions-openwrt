@@ -51,6 +51,21 @@ jobs:
         df -Th
         uname -a
 
+    - name: Maximize build space
+      uses: easimon/maximize-build-space@master
+      with:
+        swap-size-mb: 1024
+        temp-reserve-mb: 512
+        root-reserve-mb: 4608
+        remove-dotnet: 'true'
+        remove-android: 'true'
+        remove-haskell: 'true'
+        remove-codeql: 'true'
+
+    - name: Show Space Usage1
+      if: (!cancelled())
+      run: df -hT
+
     - name: Free Space
       run: |
 
@@ -70,7 +85,7 @@ jobs:
         sudo docker image prune -a -f
         sudo docker container prune -f
 
-    - name: Show Space Usage
+    - name: Show Space Usage2
       if: (!cancelled())
       run: df -hT
 
