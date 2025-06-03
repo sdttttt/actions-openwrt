@@ -59,25 +59,6 @@ jobs:
         remove-haskell: 'true'
         remove-codeql: 'true'
 
-    - name: Free Space
-      run: |
-
-        chmod +x ./free_disk_space.sh && ./free_disk_space.sh
-        
-        sudo docker image prune -a -f
-        sudo systemctl stop docker
-        
-        sudo apt-get -y purge firefox clang* ghc* google* llvm* mono* mongo* mysql* php*
-        sudo apt-get -y autoremove --purge
-        sudo apt-get clean
-        
-        rm -rf ~/{.cargo,.dotnet,.rustup}
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-        sudo timedatectl set-timezone "$TZ"
-        sudo docker image prune -a -f
-        sudo docker container prune -f
-
     - name: Show Space Usage2
       if: (!cancelled())
       run: df -hT
