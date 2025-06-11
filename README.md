@@ -7,6 +7,12 @@
 
 > 纯新手啥也不会，不会改源码也不会打patch，基本调调配置文件和package，最多就改改内核选项，主打一个原汁原味😢
 
+## hack
+
+- 用了O2编译
+- 修改主机名`ImmortalWrt -> OpenWrt`因为`ImmortalWrt`太长了www
+- 默认`192.168.10.1`
+- 合并了`QiuSimons/YAOF`的部分`Patch`
 
 ## 插件
 
