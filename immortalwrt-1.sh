@@ -15,7 +15,7 @@ wget https://github.com/zfl9/chinadns-ng/raw/refs/heads/master/res/chnlist.txt -
 
 sed -i 's/Os/O2 -march=x86-64-v2/g' include/target.mk
 
-# 使用动态抢占
+# 内核配置
 [[ -f target/linux/x86/config-6.6 ]] && cat >> target/linux/x86/config-6.6 <<-EOF
 CONFIG_PREEMPT_DYNAMIC=y
 CONFIG_BPF=y
