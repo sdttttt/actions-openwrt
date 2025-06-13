@@ -16,7 +16,7 @@ wget https://github.com/zfl9/chinadns-ng/raw/refs/heads/master/res/chnlist.txt -
 sed -i 's/Os/O2 -march=x86-64-v2/g' include/target.mk
 
 # 使用动态抢占
-cat >> target/linux/x86/config-6.6 <<-EOF
+[[ -f target/linux/x86/config-6.6 ]] && cat >> target/linux/x86/config-6.6 <<-EOF
 CONFIG_PREEMPT_DYNAMIC=y
 CONFIG_BPF=y
 CONFIG_BPF_SYSCALL=y
@@ -36,7 +36,7 @@ CONFIG_KPROBE_EVENTS=y
 CONFIG_BPF_EVENTS=y
 EOF
 
-cat >> target/linux/x86/64/config-6.6 <<-EOF
+[[ -f target/linux/x86/64/config-6.6 ]] && cat >> target/linux/x86/64/config-6.6 <<-EOF
 CONFIG_PREEMPT_DYNAMIC=y
 CONFIG_BPF=y
 CONFIG_BPF_SYSCALL=y
@@ -55,6 +55,47 @@ CONFIG_DEBUG_INFO_BTF=y
 CONFIG_KPROBE_EVENTS=y
 CONFIG_BPF_EVENTS=y
 EOF
+
+[[ -f target/linux/x86/64/config-6.12 ]] && cat >> target/linux/x86/64/config-6.12 <<-EOF
+CONFIG_PREEMPT_DYNAMIC=y
+CONFIG_BPF=y
+CONFIG_BPF_SYSCALL=y
+CONFIG_BPF_JIT=y
+CONFIG_CGROUPS=y
+CONFIG_KPROBES=y
+CONFIG_NET_INGRESS=y
+CONFIG_NET_EGRESS=y
+CONFIG_NET_SCH_INGRESS=m
+CONFIG_NET_CLS_BPF=m
+CONFIG_NET_CLS_ACT=y
+CONFIG_BPF_STREAM_PARSER=y
+CONFIG_DEBUG_INFO=y
+# CONFIG_DEBUG_INFO_REDUCED is not set
+CONFIG_DEBUG_INFO_BTF=y
+CONFIG_KPROBE_EVENTS=y
+CONFIG_BPF_EVENTS=y
+EOF
+
+[[ -f target/linux/x86/64/config-6.12 ]] && cat >> target/linux/x86/64/config-6.12 <<-EOF
+CONFIG_PREEMPT_DYNAMIC=y
+CONFIG_BPF=y
+CONFIG_BPF_SYSCALL=y
+CONFIG_BPF_JIT=y
+CONFIG_CGROUPS=y
+CONFIG_KPROBES=y
+CONFIG_NET_INGRESS=y
+CONFIG_NET_EGRESS=y
+CONFIG_NET_SCH_INGRESS=m
+CONFIG_NET_CLS_BPF=m
+CONFIG_NET_CLS_ACT=y
+CONFIG_BPF_STREAM_PARSER=y
+CONFIG_DEBUG_INFO=y
+# CONFIG_DEBUG_INFO_REDUCED is not set
+CONFIG_DEBUG_INFO_BTF=y
+CONFIG_KPROBE_EVENTS=y
+CONFIG_BPF_EVENTS=y
+EOF
+
 
 # 交换 LAN/WAN 口
 sed -i 's,"eth1" "eth0","eth0" "eth1",g' target/linux/rockchip/armv8/base-files/etc/board.d/02_network
