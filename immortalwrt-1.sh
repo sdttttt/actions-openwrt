@@ -56,7 +56,7 @@ CONFIG_KPROBE_EVENTS=y
 CONFIG_BPF_EVENTS=y
 EOF
 
-[[ -f target/linux/x86/64/config-6.12 ]] && cat >> target/linux/x86/64/config-6.12 <<-EOF
+[[ -f target/linux/x86/config-6.12 ]] && cat >> target/linux/x86/config-6.12 <<-EOF
 CONFIG_PREEMPT_DYNAMIC=y
 CONFIG_BPF=y
 CONFIG_BPF_SYSCALL=y
