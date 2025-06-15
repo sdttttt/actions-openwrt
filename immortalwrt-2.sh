@@ -22,6 +22,9 @@ git clone https://github.com/sbwml/v2ray-geodata --depth=1  package/v2ray-geodat
 find ./ | grep Makefile | grep openclash | xargs rm -f  
 git clone -b dev https://github.com/vernesong/OpenClash --depth=1  package/luci-app-openclash 
 
+sed -i 's/--set=llvm\.download-ci-llvm=true/--set=llvm.download-ci-llvm=false/' package/lang/rust/Makefile
+
+
 # luci-app-nekoclash
 # find ./ | grep Makefile | grep nekobox | xargs rm -f  
 # git clone https://github.com/Thaolga/openwrt-nekobox  package/openwrt-nekobox
