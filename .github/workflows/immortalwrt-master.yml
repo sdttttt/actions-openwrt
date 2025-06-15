@@ -92,7 +92,7 @@ jobs:
     - name: Clone
       run: |
         df -hT $PWD
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
+        git clone $REPO_URL --single-branch --filter=blob:none -b $REPO_BRANCH openwrt
     
     - name: Run Script 1
       run: |
