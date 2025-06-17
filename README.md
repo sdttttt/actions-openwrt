@@ -25,6 +25,11 @@
 - luci-app-nikki: 自己渐渐能开始玩转Linux的网络模块了，OpenClash对我来说处处都有限制，开始尝试能裸核心的插件. nikki可以关闭代理但开启核心，这样转发规则可以完全自己控制。
 
 
+## Screenshot
+
+![image](https://github.com/user-attachments/assets/70e64b11-ca06-4d13-84b2-bdcae501520c)
+
+
 ## Credits
 
 - [Microsoft Azure](https://azure.microsoft.com)
