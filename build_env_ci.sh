@@ -3,8 +3,12 @@ set +e
 
 openwrt_repo_url=${REPO_URL="https://github.com/immortalwrt/immortalwrt"}
 openwrt_repo_branch=${REPO_BRANCH="master"}
+feeds_conf=${$FEEDS_CONF="feeds.conf.default"}
+config_file=${CONFIG_FILE="immortalwrt.x86.config"}
 
 git clone --single-branch --filter=blob:none -b $openwrt_repo_branch $openwrt_repo_url  openwrt
+
+ [ -e $feeds_conf ] && mv $feeds_conf openwrt/feeds.conf.default
 
 pushd ./openwrt
 
@@ -40,7 +44,6 @@ sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 # luci-app-nikki
 echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> feeds.conf.default
 
-# 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
@@ -55,3 +58,5 @@ git clone https://github.com/sbwml/luci-app-mosdns --depth=1  -b v5 package/new/
 sed -i 's/--set=llvm\.download-ci-llvm=true/--set=llvm.download-ci-llvm=false/' feeds/packages/lang/rust/Makefile
 
 popd
+
+[ -e $config_file ] && mv $config_file openwrt/.config
