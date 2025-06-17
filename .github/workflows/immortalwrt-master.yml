@@ -83,6 +83,11 @@ jobs:
     - name: Ready
       id: ready
       run: |
+        export REPO_URL=$REPO_URL
+        export REPO_BRANCH=${REPO_BRANCH}
+        export FEEDS_CONF=$FEEDS_CONF
+        export CONFIG_FILE=$CONFIG_FILE
+        
         chmod +x ./build_env_ci.sh
         ./build_env_ci.sh
 
