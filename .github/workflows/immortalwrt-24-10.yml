@@ -22,12 +22,8 @@ on:
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-24.10
-  # REPO_URL: https://github.com/coolsnowwolf/lede
-  # REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: immortalwrt.24.x86.config
-  DIY_P1_SH: immortalwrt-1.sh
-  DIY_P2_SH: immortalwrt-2.sh
   CLASH_CORE_SH: preset-clash-core-amd64.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
@@ -68,9 +64,6 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
 
-        sudo -E apt-get -qq update
-        sudo -E apt-get -qq install ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libfuse-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libpython3-dev libreadline-dev libssl-dev libtool lrzsz mkisofs msmtp ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
-
         sudo apt update -y
         sudo apt full-upgrade -y
         sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
@@ -81,45 +74,15 @@ jobs:
           ninja-build p7zip p7zip-full patch pkgconf python3 python3-pip python3-ply python3-docutils \
           python3-pyelftools qemu-utils re2c rsync scons squashfs-tools subversion swig texinfo uglifyjs \
           upx-ucl unzip vim wget xmlto xxd zlib1g-dev zstd
-        
-        sudo -E apt-get -qq autoremove --purge
-        sudo -E apt-get -qq clean
-        sudo timedatectl set-timezone "$TZ"
 
     - name: Checkout
       uses: actions/checkout@main
 
-    - name: Clone
+    - name: Ready
+      id: ready
       run: |
-        df -hT $PWD
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
-    
-    - name: Run Script 1
-      run: |
-        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
-        chmod +x $DIY_P1_SH
-        chmod +x $CLASH_CORE_SH
-        cd openwrt
-        $GITHUB_WORKSPACE/$DIY_P1_SH
-        $GITHUB_WORKSPACE/$CLASH_CORE_SH
-
-    - name: Update Feeds
-      run: cd openwrt && ./scripts/feeds update -a
-
-    - name: Install Feeds
-      run: cd openwrt && ./scripts/feeds install -a
-
-    - name: Run Script 2
-      run: |
-        [ -e files ] && mv files openwrt/files
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x $DIY_P2_SH
-        cd openwrt
-        $GITHUB_WORKSPACE/$DIY_P2_SH
-
-    - name: Show .config
-      run: | 
-         [ -e openwrt/.config ] && cat openwrt/.config
+        chmod +x ./build_env_ci.sh
+        ./build_env_ci.sh
 
     - name: Cache
       uses: HiGarfield/cachewrtbuild@main
@@ -133,24 +96,14 @@ jobs:
          #清空缓存
          clean: false
          prefix: ${{ github.workspace }}/openwrt
-         mixkey: 'immortalwrt-24.05-x86_64'
-
-    - name: Download
-      id: package
-      run: |
-        cd openwrt
-        make defconfig
-        make download -j8
-        find dl -size -1024c -exec ls -l {} \;
-        find dl -size -1024c -exec rm -f {} \;
+         mixkey: 'immortalwrt-master-x86_64'
 
     - name: Compile
       id: compile
       run: |
         cd openwrt
         echo -e "$(($(nproc)+1)) thread compile"
-        make -j$(nproc) || make -j1 || make -j1 V=s
-        # echo "::set-output name=status::success"
+        make -j$(nproc) || make -j1 V=s
         echo "status=success" >> $GITHUB_OUTPUT
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
