@@ -57,7 +57,7 @@ jobs:
         remove-haskell: 'true'
         remove-codeql: 'true'
 
-    - name: Show Space Usage2
+    - name: Show Space Usage
       if: (!cancelled())
       run: df -hT
 
