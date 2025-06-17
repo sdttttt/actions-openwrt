@@ -10,7 +10,6 @@
 
 ## hack
 
-- 用了O2编译
 - 抢占模式改为了动态抢占`PREEMPT_DYNAMIC`
 - 修改主机名`ImmortalWrt -> OpenWrt`因为`ImmortalWrt`太长了www
 - 默认`192.168.10.1`
