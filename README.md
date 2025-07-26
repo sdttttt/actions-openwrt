@@ -1,7 +1,5 @@
 [![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square&label=LICENSE)](https://github.com/P3TERX/Actions-OpenWrt/blob/master/LICENSE)
 
-能编译以下固件~
-
 - x86 Immortalwrt 主线
 - x86 Immortalwrt 24.10
 
@@ -23,7 +21,7 @@
 - luci-app-openclash: 估计是目前用的最多的openwrt透明代理插件，经典。
 - chinadns-ng: 比较简单易用高性能的dns分流器，因为clash的dns存在性能问题，所以还是得用其他的。
 - luci-app-nikki: 自己渐渐能开始玩转Linux的网络模块了，OpenClash对我来说处处都有限制，开始尝试能裸核心的插件. nikki可以关闭代理但开启核心，这样转发规则可以完全自己控制。
-- luci-app-homeproxy: 基于sing-box的代理工具，缺点是对比clash配置难度全方位增高，并且核心配置迭代频繁，非代理工具老司机慎用。(目前本人裸核心使用)
+- luci-app-homeproxy: 基于sing-box的代理工具.
 
 ## Screenshot
 
