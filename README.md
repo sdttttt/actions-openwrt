@@ -9,7 +9,6 @@
 
 ## hack
 
-- 抢占模式改为了动态抢占`PREEMPT_DYNAMIC`
 - 修改主机名`ImmortalWrt -> OpenWrt`因为`ImmortalWrt`太长了www
 - 默认`192.168.10.1`
 - 合并了`QiuSimons/YAOF`的部分`Patch`
@@ -20,8 +19,6 @@
 
 - luci-app-openclash: 估计是目前用的最多的openwrt透明代理插件，经典。
 - chinadns-ng: 比较简单易用高性能的dns分流器，因为clash的dns存在性能问题，所以还是得用其他的。
-- luci-app-nikki: 自己渐渐能开始玩转Linux的网络模块了，OpenClash对我来说处处都有限制，开始尝试能裸核心的插件. nikki可以关闭代理但开启核心，这样转发规则可以完全自己控制。
-- luci-app-homeproxy: 基于sing-box的代理工具.
 
 ## Screenshot
 
