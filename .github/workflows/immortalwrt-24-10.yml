@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Immortalwrt-24.10
+name: Immortalwrt-25.12
 
 on:
   repository_dispatch:
@@ -21,9 +21,9 @@ on:
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: openwrt-24.10
+  REPO_BRANCH: openwrt-25.12
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: immortalwrt.24.x86.config
+  CONFIG_FILE: immortalwrt.25.x86.config
   CLASH_CORE_SH: preset-clash-core-amd64.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
@@ -143,7 +143,7 @@ jobs:
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
         # echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
-        echo "release_tag=$(date +"Immortalwrt-24.10-%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
+        echo "release_tag=$(date +"Immortalwrt-25.12-%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         touch release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
