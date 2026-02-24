@@ -25,7 +25,6 @@
 
 ![image](https://github.com/user-attachments/assets/70e64b11-ca06-4d13-84b2-bdcae501520c)
 
-
 ## Credits
 
 - [Microsoft Azure](https://azure.microsoft.com)
@@ -46,3 +45,7 @@
 ## License
 
 [MIT](https://github.com/P3TERX/Actions-OpenWrt/blob/main/LICENSE) © [**P3TERX**](https://p3terx.com)
+
+## TIP
+
+如果可以最好还是自己搭一个虚拟机来编译固件，这样编译快也自己也能学(踩坑)到更多东西。
