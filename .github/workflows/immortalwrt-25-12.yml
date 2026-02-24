@@ -81,8 +81,8 @@ jobs:
     - name: Ready
       id: ready
       run: |
-        chmod +x ./build_env_ci.sh
-        ./build_env_ci.sh
+        chmod +x ./build25_env_ci.sh
+        ./build25_env_ci.sh
 
     - name: Cache
       uses: HiGarfield/cachewrtbuild@main
