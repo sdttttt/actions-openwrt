@@ -96,7 +96,7 @@ jobs:
          #清空缓存
          clean: false
          prefix: ${{ github.workspace }}/openwrt
-         mixkey: 'immortalwrt-master-x86_64'
+         mixkey: 'immortalwrt-25.12-x86_64'
 
     - name: Compile
       id: compile
