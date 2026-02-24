@@ -18,6 +18,7 @@
 
 - luci-app-openclash: 估计是目前用的最多的openwrt透明代理插件，经典。
 - chinadns-ng: 比较简单易用高性能的dns分流器，因为clash的dns存在性能问题，所以还是得用其他的。
+- luci-app-nikki: 另一个clash的openwrt插件，功能对比openclash简单但是够用，并且不使用ruby，对clash配置熟悉可以自己配置推荐使用这个。
 
 ## Screenshot
 
